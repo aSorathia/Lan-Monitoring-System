@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="84.0" prefWidth="352.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmiclient.MainFXMLDocumentController">
+    <stylesheets>
+        <URL value="@mainfxmldocument.css" />
+    </stylesheets>
+   <children>
+      <Button layoutX="246.0" layoutY="41.0" mnemonicParsing="false" onAction="#cExit" prefHeight="34.0" prefWidth="37.0" text="Exit" />
+      <Label fx:id="index" layoutX="83.0" layoutY="49.0" text="-1">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="14.0" text="Server IP:" />
+      <TextField fx:id="serverIp" layoutX="72.0" layoutY="10.0" prefHeight="25.0" prefWidth="107.0" promptText="xxx.xxx.xxx.xxx" />
+      <Button layoutX="245.0" layoutY="9.0" mnemonicParsing="false" onAction="#setServerip" prefHeight="25.0" prefWidth="38.0" text="set" />
+      <Label layoutX="14.0" layoutY="50.0" text="Client Index: " />
+      <Label fx:id="status" layoutX="111.0" layoutY="49.0" text="Not Connected" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="startButton" layoutX="289.0" layoutY="9.0" mnemonicParsing="false" onAction="#startServer" prefHeight="66.0" prefWidth="56.0" text="Start" />
+      <TextField fx:id="serverPort" layoutX="183.0" layoutY="10.0" prefHeight="25.0" prefWidth="56.0" promptText="port" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmiserver.About.AboutFXMLController">
+    <stylesheets>
+        <URL value="@aboutfxml.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="75.0" fitWidth="576.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@banner1.jpg" />
+         </image>
+         <effect>
+            <DropShadow height="56.58" radius="26.307499999999997" spread="0.03" width="50.65" />
+         </effect>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="1.0" layoutY="105.0" prefHeight="27.0" prefWidth="594.0" text="Project: " textAlignment="CENTER" textFill="#0084ff">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="131.0" layoutY="132.0" opacity="0.65" text="LAN MONITORING" textFill="RED" wrapText="true">
+         <font>
+            <Font name="Times New Roman Bold" size="36.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="15.06" offsetX="-2.0" offsetY="-2.0" radius="3.265" spread="1.0" width="0.0" />
+         </effect>
+      </Label>
+      <Label layoutX="17.0" layoutY="223.0" text="Members:" underline="true">
+         <font>
+            <Font name="Times New Roman Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="248.0" text="•  Kanchan More" textFill="#005eff">
+         <font>
+            <Font name="Times New Roman Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="276.0" text="•  Amee Bavishi" textFill="#005eff">
+         <font>
+            <Font name="Times New Roman Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="157.0" layoutY="172.0" opacity="0.65" text="USING RMI PROTOCOL" textFill="RED" wrapText="true">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="15.06" offsetX="-2.0" offsetY="-2.0" radius="3.265" spread="1.0" width="0.0" />
+         </effect>
+         <font>
+            <Font name="Times New Roman Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="333.0" text="Project Guide" underline="true">
+         <font>
+            <Font name="Times New Roman Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="357.0" text="•  Prof. Sainath Patil" textFill="#2f6b13">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="25.0" />
+         </font>
+      </Label>
+   </children>
+   <effect>
+      <InnerShadow blurType="GAUSSIAN" choke="0.62" radius="9.2575" width="18.03" />
+   </effect>
+</AnchorPane>

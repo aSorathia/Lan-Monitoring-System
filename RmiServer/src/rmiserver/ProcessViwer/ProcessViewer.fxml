@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="287.0" prefHeight="400.0" prefWidth="287.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmiserver.ProcessViwer.ProcessViewerController">
+    <stylesheets>
+        <URL value="@processviewer.css" />
+    </stylesheets>
+   <children>
+      <ListView fx:id="processList" layoutX="16.0" layoutY="46.0" prefHeight="304.0" prefWidth="257.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="46.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Process of :" />
+      <HBox alignment="CENTER" layoutY="361.0" prefHeight="25.0" prefWidth="174.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="buttonRefresh" contentDisplay="CENTER" layoutX="118.0" layoutY="361.0" mnemonicParsing="false" onAction="#refreshProcess" text="Refresh" textAlignment="CENTER" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="113.0" />
+         </children>
+      </HBox>
+      <Label fx:id="clientName" layoutX="80.0" layoutY="14.0" />
+   </children>
+</AnchorPane>

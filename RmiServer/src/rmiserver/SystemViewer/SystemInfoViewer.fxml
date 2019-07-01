@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmiserver.SystemViewer.SystemInfoViewerController">
+    <stylesheets>
+        <URL value="@systeminfoviewer.css" />
+    </stylesheets>
+   <children>
+      <TabPane layoutX="45.0" layoutY="21.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Processor/Memory">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="27.0" layoutY="28.0" prefHeight="109.0" prefWidth="548.0" style="-fx-border-style: solid; -fx-border-radius: 10; -fx-border-width: 4; -fx-background-color: #1098E6;" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="25.0">
+                           <children>
+                              <Label text="Processor" textFill="RED" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processor" layoutX="28.0" layoutY="28.0" textFill="#ffdd00">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="phyCPU" layoutX="42.0" layoutY="55.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="logCPU" layoutX="42.0" layoutY="83.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="processorID" layoutX="28.0" layoutY="110.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox layoutX="14.0" layoutY="203.0" prefHeight="109.0" prefWidth="548.0" spacing="10.0" style="-fx-border-style: solid; -fx-border-radius: 5; -fx-border-width: 4; -fx-background-color: #1098E6;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+                           <children>
+                              <Label text="Memory" textFill="RED" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ramPic.png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow color="#00000084" height="12.11" offsetX="5.0" offsetY="6.0" radius="6.295" spread="0.66" width="15.07" />
+                                 </effect>
+                              </ImageView>
+                              <ProgressBar fx:id="memoProgressBar" layoutX="14.0" layoutY="286.0" prefWidth="200.0" progress="0.0" />
+                              <HBox spacing="9.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="304.0" text="Used:" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="memoryLabel" textFill="#ffdd00">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#refreshMemory" text="Refresh" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="File System">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <ScrollPane hbarPolicy="NEVER" layoutY="29.0" pannable="true" prefHeight="450.0" prefViewportHeight="479.0" prefViewportWidth="600.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+                           <content>
+                              <BorderPane fx:id="fsAnchorPane" prefHeight="479.0" prefWidth="571.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </content>
+                        </ScrollPane>
+                        <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" onAction="#refreshFs" text="Refresh" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Network Interfaces">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="47.0" layoutY="43.0" prefHeight="436.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="479.0" prefWidth="600.0">
+                                 <children>
+                                    <TextArea fx:id="niTextArea" editable="false" layoutX="69.0" layoutY="50.0" prefHeight="479.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" onAction="#refreshNi" text="Refresh" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="USB">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="479.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="479.0" prefWidth="600.0">
+                                 <children>
+                                    <TextArea fx:id="usbTextArea" editable="false" prefHeight="479.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <Button layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#refreshusb" text="Refresh" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,158 @@
+cIndex=""
+arg= 
+subarg= 
+optarg= 
+
+usage="Program for Lan Monitoring
+usage: 
+======
+help:				$(basename "$0") [-h | --help]
+view Clients: 			$(basename "$0") [-v]
+Screenshot: 			$(basename "$0") -i index [-s [-o filename]]
+Specific Client Message:	$(basename "$0") -i index [-m YOUR_MESSAGE]
+Get Client Process:		$(basename "$0") -i index [-p]
+Broadcast Message: 		$(basename "$0") [-b -m YOUR_MESSAGE]
+
+where:
+======
+	-i		client Index
+Options:
+========
+	-h | --help		help/usage
+	-v | --view	view Connected clients
+	-s | --screenshot	get client Screenshot
+	-o | --out		output Directory
+	-m | --msg		Text Message
+	-b | --broadcast	broadcast message to all connected clients
+	-p | --process		get Client Processes"
+
+invalid="Invalid option
+Please type in proper Options
+To see help for more info type mserver -h or mserver --help"
+
+invalidIndex="An Error Occured
+Please Provide Proper Client Index
+To get Client Index type mserver -v"
+
+#server-address=127.0.0.1
+#default-address=false
+#server-port=6666
+serverport=
+serverip=
+
+input="$installDir""server.config"
+while IFS= read -r var
+do
+    string="$var"
+    substring="server-address="
+    if test "${string#*$substring}" != "$string"
+    then
+	serverip=${var#*$substring}        
+    fi
+
+    substring="server-port="
+    if test "${string#*$substring}" != "$string"
+    then
+        serverport=${var#*$substring}	        
+    fi
+
+done < "$input"
+
+
+send_Message(){		
+    java -jar ~/bin/ScriptExecuter.jar $serverip $serverport m $cIndex "$optarg"
+}
+
+takeScreenshot(){
+    picture=$(java -jar ~/bin/ScriptExecuter.jar $serverip $serverport s $cIndex)
+    if [ "$subarg" = "o" ];then	
+            mv ~/screenshot/"$picture" "$optarg"/"$picture"
+	    echo "Saved to location: $optarg/$picture"
+            exit 1
+    fi       
+	echo "Screenshot save at location ~/screenshot/$picture"		
+}
+
+sendBroadcast(){	
+    java -jar ~/bin/ScriptExecuter.jar $serverip $serverport  b "$optarg"
+}
+
+getProcess(){	
+    java -jar ~/bin/ScriptExecuter.jar $serverip $serverport p $cIndex
+}
+
+getClients(){
+    java -jar ~/bin/ScriptExecuter.jar $serverip $serverport v
+}
+
+
+# Transform long options to short ones
+for args in "$@"; do
+	shift
+	case "$args" in
+		"--view") set -- "$@" "-v" ;;
+		"--screenshot") set -- "$@" "-s" ;;
+		"--out") set -- "$@" "-" ;;
+		"--broadcast") set -- "$@" "-o" ;;
+		"--msg") set -- "$@" "-b" ;;
+		"--process") set -- "$@" "-m" ;;
+		"--help") set -- "$@" "-h" ;;    
+		*)        set -- "$@" "$args"
+	esac
+done
+
+oVal=( screenshot out broadcast msg process help )
+while getopts ":hsbpi:o:m:v" option ; do	
+	case $option in	
+		
+		s )	if [ "$arg" = "" ]; then arg="s"; fi;;
+		o )	if [ "$subarg" = "" ]; then subarg="o"; optarg=$OPTARG; fi ;;
+		b )	if [ "$arg" = "" ]; then arg="b"; fi;;
+		m )	if [ "$arg" = "b" ]; then subarg="m" ; optarg=$OPTARG
+			elif [ "$arg" = "" ] ; then arg="m"; optarg=$OPTARG; fi ;;
+		p )	if [ "$arg" = "" ]; then arg="p"; fi ;;
+		i )	cIndex=$OPTARG;;
+		h )	echo "$usage";exit 1;;	
+		v )	if [ "$arg" = "" ]; then arg="v"; fi;;
+		\? )	echo "$invalid";exit 1;;		
+		: )	echo "Option -$OPTARG requires an argument." >&2;exit 1;;
+	esac
+	
+done
+
+shift $(($OPTIND - 1))
+
+if [ $# -gt 0 ]
+then
+	echo "$invalid";
+fi
+
+
+if [ "$arg" = "s" ]; then
+	if [ "$cIndex" = "" ];then
+		echo "$invalidIndex"
+		exit 1
+	fi
+	takeScreenshot	
+elif [ "$arg" = "m" ]; then
+	if [ "$cIndex" = "" ];then
+		echo "$invalidIndex"
+		exit 1
+	fi
+	send_Message
+elif [ "$arg" = "b"  ]; then
+	if [ "$subarg" = "m" ];then
+		sendBroadcast
+	fi
+elif [ "$arg" = "p"  ]; then
+	if [ "$cIndex" = "" ];then
+		echo "$invalidIndex"
+		exit 1
+	fi
+	getProcess
+elif [ "$arg" = "v"  ]; then
+	getClients
+else	
+	echo "$invalid"
+fi
+

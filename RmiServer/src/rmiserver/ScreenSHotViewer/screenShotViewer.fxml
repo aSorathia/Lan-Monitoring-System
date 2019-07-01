@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmiserver.ScreenSHotViewer.ScreenShotViewerController">
+    <stylesheets>
+        <URL value="@screenshotviewer.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutY="37.0" prefHeight="358.0" prefWidth="600.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
+         <children>
+            <ImageView fx:id="im" fitHeight="358.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER" layoutX="-2.0" layoutY="368.0" prefHeight="25.0" prefWidth="302.0" spacing="10.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label text="Pc Name:" />
+            <Label fx:id="clientName" />
+            <Button mnemonicParsing="false" onAction="#refreshImage" text="Refresh" />
+            <Button layoutX="248.0" layoutY="368.0" mnemonicParsing="false" onAction="#saveImage" text="Save" />
+            <ChoiceBox fx:id="cb" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="175.0" layoutY="14.0" AnchorPane.bottomAnchor="405.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="fName" layoutX="175.0" layoutY="14.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
